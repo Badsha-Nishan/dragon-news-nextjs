@@ -1,15 +1,13 @@
-import { GetNewsById } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 import { FaBookmark, FaEye, FaStar } from "react-icons/fa";
 import { IoMdShare } from "react-icons/io";
 
-const NewsDetailsPage = async ({ params }) => {
-  const { id } = await params;
-  const news = await GetNewsById(id);
-  const { title, rating, author, total_view, image_url, details, _id } = news;
+const NewsCard = ({ n }) => {
+  const { title, rating, author, total_view, image_url, details, _id } = n;
   return (
-    <div className="card bg-base-100 shadow-sm container mx-auto mt-6">
+    <div className="card bg-base-100 shadow-sm">
       <div className="flex gap-4 items-center px-5 bg-gray-200 py-2 justify-between">
         <div className="flex gap-4 items-center">
           <div>
@@ -42,7 +40,7 @@ const NewsDetailsPage = async ({ params }) => {
             className="w-full"
           />
         </figure>
-        <p className="">{details}</p>
+        <p className="line-clamp-3">{details}</p>
         <div className="divider"></div>
         <div className="flex justify-between items-center">
           <div className="text-orange-400 flex gap-2">
@@ -69,11 +67,7 @@ const NewsDetailsPage = async ({ params }) => {
             <p>{rating.number}</p>
           </div>
           <div>
-            <button className="btn btn-primary">
-              <Link href={`/category/${news.category_id}`}>
-                See other news in this category
-              </Link>
-            </button>
+            <button className="btn btn-primary"><Link href={`/news/${_id}`}>See Details</Link></button>
           </div>
           <div className="flex gap-2 items-center">
             <FaEye />
@@ -85,4 +79,4 @@ const NewsDetailsPage = async ({ params }) => {
   );
 };
 
-export default NewsDetailsPage;
+export default NewsCard;
