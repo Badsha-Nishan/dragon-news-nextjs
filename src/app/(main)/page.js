@@ -1,30 +1,22 @@
-const GetCategory = async () => {
-  const res = await fetch(
-    "https://openapi.programming-hero.com/api/news/categories"
-  );
-  const data = await res.json();
-  return data.data;
-};
+import LeftSideBar from "@/components/homepage/LeftSideBar";
+import RightSideBar from "@/components/homepage/RightSideBar";
+import { GetCategory, GetNewsByCategory } from "@/lib/data";
 
 export default async function Home() {
   const category = await GetCategory();
+  const news = await GetNewsByCategory("04");
   return (
-    <div className="grid grid-cols-12 gap-4 container mx-auto">
-      <div className="col-span-3">
-        <h2 className="text-xl font-bold">All Category</h2>
-        <ul className="mt-5 flex flex-col gap-3">
-          {category.news_category.map((category) => (
-            <li
-              className="bg-gray-200 p-3 rounded-md text-gray-500"
-              key={category.category_id}
-            >
-              {category.category_name}
-            </li>
+    <div className="grid grid-cols-12 gap-4 container mx-auto my-8">
+      <LeftSideBar category={category} activeId={"02"} />
+      <div className="col-span-6">
+        <h2 className="text-xl font-bold">News by Category</h2>
+        <div className="space-y-4">
+          {news.map((n) => (
+            <div key={n._id} className="p-6 rounded-md border">{n.title}</div>
           ))}
-        </ul>
+        </div>
       </div>
-      <div className="col-span-6">Dragon News Home</div>
-      <div className="col-span-3">Social</div>
+      <RightSideBar />
     </div>
   );
 }
