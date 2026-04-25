@@ -4,6 +4,15 @@ import Link from "next/link";
 import { FaBookmark, FaEye, FaStar } from "react-icons/fa";
 import { IoMdShare } from "react-icons/io";
 
+export const generateMetadata = async ({ params }) => {
+  const { id } = await params;
+  const news = await GetNewsById(id);
+  return {
+    title: news.title,
+    description: news.details,
+  };
+};
+
 const NewsDetailsPage = async ({ params }) => {
   const { id } = await params;
   const news = await GetNewsById(id);
