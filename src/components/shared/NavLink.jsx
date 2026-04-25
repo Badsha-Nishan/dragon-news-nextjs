@@ -6,7 +6,7 @@ const NavLink = ({href, children, className}) => {
     const pathname = usePathname()
     const isActive = href === pathname
     return (
-        <Link href={href} className={`${isActive?"border-b-2 border-purple-500":""}`}>
+        <Link href={href} className={`${isActive?"border-b-2 border-purple-500":""} ${className}`}>
           {children}
         </Link>
     );
