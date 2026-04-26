@@ -11,7 +11,7 @@ const Navbar = () => {
   console.log(user);
   return (
     <>
-      <div className="flex justify-between items-center gap-3 container mx-auto mt-4">
+      <div className="sticky top-18 z-50 bg-base-100 py-3 flex justify-between items-center gap-3 container mx-auto mt-4">
         <div></div>
         <ul className="flex justify-center items-center gap-5 text-gray-700">
           <li>
