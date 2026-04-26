@@ -74,6 +74,7 @@ const RegisterPage = () => {
                 placeholder="Type a Password"
               />
               <button
+                type="button"
                 className="text-xl absolute right-0 btn-neutral btn"
                 onClick={() => setShowPassword(!showPassword)}
               >

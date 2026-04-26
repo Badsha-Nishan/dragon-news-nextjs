@@ -57,6 +57,7 @@ const LoginPage = () => {
                 placeholder="Type a Password"
               />
               <button
+                type="button"
                 className="text-xl absolute right-0 btn-neutral btn"
                 onClick={() => setShowPassword(!showPassword)}
               >
@@ -71,7 +72,9 @@ const LoginPage = () => {
             )}
           </div>
 
-          <button className="btn btn-neutral mt-4">Login</button>
+          <button type="submit" className="btn btn-neutral mt-4">
+            Login
+          </button>
           <p className=" text-sm">
             Don't have an account?{" "}
             <Link href={"/register"} className="text-red-500">
