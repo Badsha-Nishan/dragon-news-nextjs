@@ -14,7 +14,7 @@ const RightSideBar = () => {
     });
   };
   return (
-    <div className="col-span-3">
+    <div className="col-span-6 md:col-span-3">
       <h2 className="mb-4 font-bold text-xl">Login With</h2>
       <div className="flex flex-col gap-2">
         <button

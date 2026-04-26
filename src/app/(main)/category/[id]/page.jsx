@@ -9,7 +9,7 @@ const NewsCategoryPage = async ({ params }) => {
   const category = await GetCategory();
   const news = await GetNewsByCategory(id);
   return (
-    <div className="grid grid-cols-12 gap-4 container mx-auto my-8">
+    <div className="grid md:grid-cols-12 gap-4 container mx-auto my-8">
       <LeftSideBar category={category} activeId={id} />
       <div className="col-span-6">
         <h2 className="text-xl font-bold">News by Category</h2>

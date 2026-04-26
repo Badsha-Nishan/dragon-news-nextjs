@@ -3,7 +3,7 @@ import React from "react";
 
 const LeftSideBar = ({ category, activeId }) => {
   return (
-    <div className="col-span-3">
+    <div className="col-span-6 md:col-span-3">
       <h2 className="text-xl font-bold">All Category</h2>
       <ul className="mt-5 flex flex-col gap-3">
         {category.news_category.map((category) => (
