@@ -1,6 +1,8 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const {
@@ -9,8 +11,20 @@ const RegisterPage = () => {
     formState: { errors },
   } = useForm();
 
-  const handleRegister = (data) => {
-    console.log(data);
+  const handleRegister = async (data) => {
+    const { data: res, error } = await authClient.signUp.email({
+      name: data.name, // required
+      email: data.email, // required
+      password: data.password, // required
+      callbackURL: "/",
+    });
+    console.log(res, error);
+    if (error) {
+      toast.error(error.message);
+    }
+    if (res) {
+      toast.success(`register success! welcome ${res.user.name}`);
+    }
   };
 
   return (
